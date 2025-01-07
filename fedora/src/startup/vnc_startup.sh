@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. /dockerstartup/common.sh
+. "${STARTUPDIR}"/common.sh
 
 ### every exit != 0 fails the script
 set -e
@@ -100,6 +100,9 @@ if [[ ! -f "${XSTARTUP_FILE}" ]]; then
     # Replace default startup script ${XSTARTUP_FILE}
     cat <<'EOF' >"${XSTARTUP_FILE}"
 #!/bin/sh
+
+. "${STARTUPDIR}"/common.sh
+
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
 
